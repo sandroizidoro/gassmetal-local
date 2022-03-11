@@ -1,0 +1,13 @@
+Number of generations
+200
+Population size
+400
+Tournament
+20
+Crossover rate
+90
+Mutation rate
+90
+Ranking
+100
+Templates
