@@ -1,0 +1,3 @@
+[submodule "GASS-METAL"]
+	path = GASS-METAL
+	url = git@github.com:sandroizidoro/GASS-METAL.git
