@@ -99,59 +99,6 @@ def DownloadPdB(code, path_to_save):
 	else:
 		return 0
 
-def UpdateTargetFiles(pdb_file):
-	novo_hom = False
-	nome_hom = pdb_file.split('.')[0] + "+.dat"
-	print(nome_hom)
-	if not os.path.exists("target/"+nome_hom):
-		novo_hom = True
-		LISTAENZIMAS = open("target/LISTAENZIMAS.TXT", "w")
-		LISTAENZIMAS.write(pdb_file.split('.')[0]+"+.txt" + "\n")
-		LISTAENZIMAS.close()
-		cmd = "python dat_completo.py target/ "+ pdb_file
-		os.system(cmd)
-
-    # gera um arquivo .dat a partir do txt
-	if novo_hom == True:  
-		cmd = "cd target && ./filtroC_Dados"
-		os.system(cmd)
-		print("Arquivos target atualizados com sucesso!")
-	else:
-		print("Todos os target ja estao atualizados")
-
-def CopyFilesToRun(list_templates):
-	cmd="rm run/*"
-	os.system(cmd)
-	for templ in list_templates:
-		cmd = "cp templates/"+templ+"_.dat run/"+templ+"_.dat"
-		os.system(cmd)
-
-def UpdateTemplateFiles(list_templates):
-	new_templ = False
-	for templ in list_templates:
-		if templ:
-			nome_hom = templ[0] + "+.txt"
-			if not os.path.exists(pasta_repo_geral + nome_hom):
-				cmd = "wget http://www.rcsb.org/pdb/files/" + templ[0] + ".pdb -O templates/" + templ[0] + ".pdb"
-				os.system(cmd)
-				cmd = "python dat_completo.py templates/ "+ templ[0]+".pdb"
-				os.system(cmd)
-			nome_hom = templ[0] + "_.dat"
-			if not os.path.exists(pasta_repo_geral + nome_hom):
-				new_templ = True
-			
-
-    # gera um arquivo .dat a partir do txt
-	if new_templ == True:
-		cmd = "cd templates && python txt_sitios.py" 
-		os.system(cmd)
-		cmd = "cd templates && ./filtroC_Dados"
-		os.system(cmd)
-		print("Template Files updated succesfully!")
-	else:
-		print("Template Files already updated")
-
-# arquivo .txt com as coordenadas de cada residuo
 def CalculaCentroide(nome_pdb):
     arq_pdb = open(nome_pdb, "r")
     linhas = arq_pdb.readlines()
@@ -376,6 +323,7 @@ if __name__=="__main__":
 	generateDats(run_folder)
 	centroide = CalculaCentroide(run_folder+"targ_.txt")
 	moveFiles(run_folder)
+	
 	process = subprocess.Popen(['./thread_GASS',run_folder+'target/',run_folder+'templates/',centroide[0], centroide[1], centroide[2]])
 	process.communicate()
 	cmd="mv "+run_folder+"target/ActiveSitesFound.txt ActiveSitesFound.txt"
