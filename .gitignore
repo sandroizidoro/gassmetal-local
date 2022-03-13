@@ -1,2 +1,6 @@
 a.out
 rodagass.py
+run/filtroC_Dados
+run/*
+.vscode/launch.json
+thread_GASS

@@ -11,3 +11,4 @@ Mutation rate
 Ranking
 100
 Templates
+1
