@@ -34,11 +34,18 @@ python rungass.py <reference_protein*> <template_site*> <mutations> <target_prot
 Where: 
 
 + reference_protein = path to a pdb file, pdb code or UniProt(AlphaFold) code of a protein to be used as template.
-+ template_site = the residues that form the template site on the format: "Residue name, position on PDB, chain;". Example: HIS,57,E; ASP,102,E; SER,195,E;
-+ mutations(optional) = swap of residues that may occur on this specific template site on the format "Residue name, residue name;". Example: HIS,CYS;GLU,ASP;SER,HIS;
++ template_site = the residues that form the template site on the format: "Residue name, position on PDB, chain;". Example: **HIS,57,E; ASP,102,E; SER,195,E;**
++ mutations(optional) = swap of residues that may occur on this specific template site on the format "Residue name, residue name;". Example: **HIS,CYS;GLU,ASP;SER,HIS;**
 + target_protein = path to a pdb file, pdb code or UniProt(AlphaFold) code of the protein where the site will be searched.
-+ reference_atom = the atom to be used as reference. The values may be only "CA" or "LHA".
++ reference_atom = the atom to be used as reference. The values may be only "**CA**" or "**LHA**".
 
+Example:
+```shell
+python rungass.py 3nos "CYS,94,B;CYS,99,A;CYS,99,B;CYS,94,A;" 3nos CA
+```
+The python script then will automatically download the pdb files from the [RCSB PDB](https://www.rcsb.org/) or [AlphaFold](https://alphafold.com/) site, extract the reference atoms position from the structure files, calculate the centroid of the target protein, run the GASS-Metal compiled binary (compiling it if necessary) and show the output on the terminal.
+
+The script however is designed to be executed on a **Linux machine**, the execution on a Windows machine is not granted by now.
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
