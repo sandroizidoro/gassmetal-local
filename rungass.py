@@ -165,7 +165,7 @@ def prepareReferenceTxt(reference, template_site, run_folder, atom, mutations):
 	else:
 		cmd = "cp "+reference+" "+run_folder+"refe.pdb"
 		os.system(cmd)
-	pdb2txt(run_folder+"refe.pdb",run_folder+"refe_.txt",atom,template_site)
+	pdb2txt(run_folder+"refe.pdb",run_folder+"refe_.txt",atom)
 	tamanho_sitio = template_site.count(';') 
 	arquivo = open(run_folder + "templates/Templates.txt", "w")
 	#alterar o nome da proteina .dat no template
@@ -202,7 +202,7 @@ def prepareTargetTxt(target, run_folder, atom):
 		os.system(cmd)
 	pdb2txt(run_folder+"targ.pdb",run_folder+"targ_.txt", atom)
 
-def pdb2txt(pdb,path_to_save, atom, template=""):
+def pdb2txt(pdb,path_to_save, atom):
 	dict_lha = {"ALA":"CB", "ARG":"CZ", "ASN":"CG", "ASP":"CG", "CYS":"SG", "GLN":"CD", "GLU":"CD", "GLY":"CA", "HIS":"CE1", "ILE":"CD1", "LEU":"CD1", "LYS":"NZ", "MET":"CE", "PHE":"CZ", "PRO":"CG", "SER":"OG", "THR":"CG2", "TRP":"CH2", "TYR":"OH", "VAL":"CG1"}
 
 	reference_atom = atom
@@ -265,7 +265,6 @@ def pdb2txt(pdb,path_to_save, atom, template=""):
        
 	arq_txt.close()
 
-
 def generateDats(run_folder):
 	cmd="cd "+run_folder+" && ./filtroC_Dados"
 	os.system(cmd)
@@ -327,4 +326,6 @@ if __name__=="__main__":
 	process = subprocess.Popen(['./thread_GASS',run_folder+'target/',run_folder+'templates/',centroide[0], centroide[1], centroide[2]])
 	process.communicate()
 	cmd="mv "+run_folder+"target/ActiveSitesFound.txt ActiveSitesFound.txt"
+	os.system(cmd)
+	cmd="cat ActiveSitesFound.txt"
 	os.system(cmd)
