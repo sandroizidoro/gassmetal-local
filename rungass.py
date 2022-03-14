@@ -289,7 +289,10 @@ def setup(run_folder):
 	if not exists(run_folder+"filtroC_Dados"):
 		os.system("g++ filtroC_Dados.cpp -o "+run_folder+"filtroC_Dados")
 	if not exists(run_folder+"LISTAENZIMAS.TXT"):
-		os.system("echo -e 'refe_.txt\ntarg_.txt' > "+run_folder+"LISTAENZIMAS.TXT")
+		arq_lista = open(run_folder+"LISTAENZIMAS.TXT", 'w')
+		arq_lista.write("refe_.txt\ntarg_.txt")
+		arq_lista.close()
+		#os.system("echo -e 'refe_.txt\ntarg_.txt' > "+run_folder+"LISTAENZIMAS.TXT")
 	if not exists("thread_GASS"):
 		os.system("g++ thread_GASS.cpp -pthread -o thread_GASS")
 	
