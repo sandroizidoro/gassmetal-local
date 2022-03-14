@@ -6,11 +6,10 @@ In this new version, GASS-Metal uses parallel genetic algorithms to create an in
 
 ## Installation
 
-
-GASS-Metal does not require a installation, however the user's system needs to be able to compile c++ source code (g++) and some python packages to execute the main script. This packages can be installed through pip, using:
+GASS-Metal does not require an installation, however, the user's system needs to be able to compile c++ source code (g++) and some python packages to execute the main script. These packages can be installed through pip, using:
 
 ```shell
-pip install requests json
+pip install requests
 ```
 
 
@@ -37,7 +36,7 @@ Where:
 + template_site = the residues that form the template site on the format: "Residue name, position on PDB, chain;". Example: **HIS,57,E; ASP,102,E; SER,195,E;**
 + mutations(optional) = swap of residues that may occur on this specific template site on the format "Residue name, residue name;". Example: **HIS,CYS;GLU,ASP;SER,HIS;**
 + target_protein = path to a pdb file, pdb code or UniProt(AlphaFold) code of the protein where the site will be searched.
-+ reference_atom = the atom to be used as reference. The values may be only "**CA**" or "**LHA**".
++ reference_atom = the atom to be used as reference. The values may be only "**CA**" (Carbon Alpha) or "**LHA**" (the Last Heavy Atom of the side chain).
 
 Example:
 ```shell
