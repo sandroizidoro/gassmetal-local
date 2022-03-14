@@ -292,7 +292,7 @@ def setup(run_folder):
 	if not exists(run_folder+"LISTAENZIMAS.TXT"):
 		os.system("echo -e 'refe_.txt\ntarg_.txt' > "+run_folder+"LISTAENZIMAS.TXT")
 	if not exists("thread_GASS"):
-		os.system("g++ thread_GASS.cpp -o thread_GASS")
+		os.system("g++ thread_GASS.cpp -pthread -o thread_GASS")
 	
 	
 	
@@ -323,7 +323,7 @@ if __name__=="__main__":
 	generateDats(run_folder)
 	centroide = CalculaCentroide(run_folder+"targ_.txt")
 	moveFiles(run_folder)
-	
+
 	process = subprocess.Popen(['./thread_GASS',run_folder+'target/',run_folder+'templates/',centroide[0], centroide[1], centroide[2]])
 	process.communicate()
 	cmd="mv "+run_folder+"target/ActiveSitesFound.txt ActiveSitesFound.txt"
