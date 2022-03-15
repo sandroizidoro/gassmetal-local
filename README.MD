@@ -16,7 +16,7 @@ pip install requests json
 
 ## Usage
 
-The GASS-Metal binary can be executed directly with the arguments:
+After downloading (zip format) and unzipping the code, the GASS-Metal binary can be executed directly with the arguments:
 ```shell
 ./thread_GASS <path_to_target*> <path_to_template*> <centroid_x> <centroid_y> <centroid_z>
 ```
@@ -43,7 +43,9 @@ Example:
 ```shell
 python rungass.py 3nos "CYS,94,B;CYS,99,A;CYS,99,B;CYS,94,A;" 3nos CA
 ```
-The python script then will automatically download the pdb files from the [RCSB PDB](https://www.rcsb.org/) or [AlphaFold](https://alphafold.com/) site, extract the reference atoms position from the structure files, calculate the centroid of the target protein, run the GASS-Metal compiled binary (compiling it if necessary) and show the output on the terminal.
+The previous example is a "sanity test", where we are using a model of the metal-binding site of the 3NOS protein, targeting the 3NOS protein metal-binding site itself. 
+
+The python script then will automatically download the pdb files from the [RCSB PDB](https://www.rcsb.org/) or [AlphaFold](https://alphafold.com/) site, extract the reference atoms position from the structure files, calculate the centroid of the target protein, run the GASS-Metal compiled binary (compiling it if necessary) and show the output on the terminal. A file (ActiveSitesFound.txt) will also be created with the results.
 
 The script however is designed to be executed on a **Linux machine**, the execution on a Windows machine is not granted by now.
 ## Contributing
