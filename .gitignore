@@ -5,3 +5,4 @@ run/*
 .vscode/launch.json
 thread_GASS
 ActiveSitesFound.txt
+.vscode/settings.json

@@ -276,8 +276,7 @@ def moveFiles(run_folder):
 	os.system(cmd)
 	cmd ="cp scripts/GA_Conf.txt "+run_folder+"templates/GA_Conf.txt"
 	os.system(cmd)
-	cmd ="cp scripts/Substitution_matrix.txt "+run_folder+"templates/SubstitutionMatrix.txt"
-	os.system(cmd)
+
 
 def setup(run_folder):
 	if not exists(run_folder):

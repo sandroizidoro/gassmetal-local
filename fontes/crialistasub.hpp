@@ -4,7 +4,7 @@ int ListaSubstituicao(char **substitutos ){
    int i = 0, ok = 0;
    char proteina [5];
    for(int j=0;j<4;j++)
-	  proteina[j] = proteina_sitiof[j];
+	  proteina[j] = toupper(proteina_sitiof[j]);
    proteina[4] = '\0';
    for(int k= 0 ; k < 567; k++){
 	   if(!strcmp(proteina, Matriz[k].lista[0])){
@@ -45,7 +45,6 @@ void CriaListaSubstituicao(Substituicao Matriz[], char *argv){
 			 char temp[10];
 			 int c1 = 0;
 			 int c2 = 0;
-
 			 while(linha[c2]!='\0'){
 				  while(linha[c2]!=','){
 					   temp[c1] = toupper(linha[c2]);
@@ -53,7 +52,6 @@ void CriaListaSubstituicao(Substituicao Matriz[], char *argv){
 				  }
 				  temp[c1]='\0';
 				  strcpy(Matriz[l1].lista[0], temp);
-
 				  c1 = 0; c2++;
 				  while(linha[c2]!=','){
 					   temp[c1] = linha[c2];
@@ -61,7 +59,6 @@ void CriaListaSubstituicao(Substituicao Matriz[], char *argv){
 				  }
 				  temp[c1]='\0';
 				  strcpy(Matriz[l1].lista[1],temp);
-
 				  c1 = 0; c2++;
 				  while(linha[c2]!='\0'){
 					   temp[c1] = linha[c2];
