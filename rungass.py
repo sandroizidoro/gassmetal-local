@@ -193,12 +193,15 @@ def prepareReferenceTxt(reference, template_site, run_folder, atom, mutations):
 			else:
 				arquivo.write("%s" % mutations[i])
 		arquivo.close()
-
+	else:
+		arquivo = open(run_folder + "templates/SubstitutionMatrix.txt", "w")
+		arquivo.close()
+  
 def prepareTargetTxt(target, run_folder, atom):
 	if(re.match("^\d\w\w\w$",target, re.I) or re.match("[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2}$", target, re.I)):
 		DownloadPdB(target, run_folder+"targ.pdb")
 	else:
-		cmd = "cp "+target+" "+run_folder+"targ.pdb"
+		cmd = "cp " + target +" "+ run_folder + "targ.pdb"
 		os.system(cmd)
 	pdb2txt(run_folder+"targ.pdb",run_folder+"targ_.txt", atom)
 
